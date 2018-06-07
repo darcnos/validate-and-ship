@@ -75,13 +75,13 @@ def zip_instance(instance):
 
 def read_csv(csvpath):
     """Reads a single CSV and returns the column of 'FILE_NAME'"""
-    #df = pandas.read_csv(csvpath)
-    df = pandas.read_csv(csvpath, error_bad_lines=False)
+    df = pandas.read_csv(csvpath)
+    #df = pandas.read_csv(csvpath, error_bad_lines=False)
     column = df['FILE_NAME']
     return(column)
 
 
-def listdirs(folder):
+def list_dirs(folder):
     """Reads a path, returns only the directories at the upper-most level
     within the path"""
     return [
@@ -90,7 +90,7 @@ def listdirs(folder):
     ]
 
 
-batches = listdirs(folder)
+batches = list_dirs(folder)
 for instance in batches:
     validation = validate_csv_and_pdfs(instance)
 
@@ -103,6 +103,6 @@ for instance in batches:
         print('DO ZIPPING STUFF!')
         zip_instance(instance)
 
-print('Program completed successfully!')
-input('Press any key to exit')
+print('\nProgram completed successfully!')
+input('Press enter to exit')
 sys.exit()
